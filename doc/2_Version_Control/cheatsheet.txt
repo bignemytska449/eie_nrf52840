@@ -1,0 +1,119 @@
+Git Command Cheatsheet (EiE Version Control)
+
+Commit History
+
+git commit
+
+Function: Saves the staged changes (files added via git add) into the local repository history. This creates a new snapshot (a "commit") of your project.
+
+Arguments:
+
+-m "Your message": Allows you to write the commit message directly on the command line, skipping the text editor. This is the most common argument.
+
+-a: Automatically stages every file that Git already knows about (files that have been modified since the last commit) and then commits them. This saves you from typing git add . first.
+
+Branch Management & Navigation
+
+git branch
+
+Function: Used to list, create, or delete branches in your local repository.
+
+Arguments:
+
+(No arguments): Lists all existing local branches and highlights the current branch.
+
+<branch-name>: Creates a new branch with the specified name based on the current commit.
+
+-d <branch-name>: Deletes the specified local branch (if it has been fully merged).
+
+git checkout
+
+Function: Primarily used to switch between branches or restore files to a previous state. It moves the HEAD pointer to a new location.
+
+Arguments:
+
+<branch-name>: Switches the current working branch to the one specified.
+
+-b <new-branch-name>: Creates a new branch and immediately switches to it. This is a common shortcut for git branch <name> followed by git checkout <name>.
+
+<file-path>: Discards changes in the working directory and restores the file to the last committed version. (Often replaced by git restore in modern Git).
+
+Remote Operations
+
+git pull
+
+Function: Fetches changes from a remote repository and immediately integrates (merges) them into your current local branch.
+
+Arguments:
+
+(No arguments): Fetches and merges changes from the default remote (origin) and default branch (e.g., main).
+
+<remote> <branch>: Fetches and merges changes from a specific remote (like origin) and a specific branch (like develop).
+
+git push
+
+Function: Uploads your local branch commits to the remote repository.
+
+Arguments:
+
+(No arguments): Pushes the current local branch to its upstream remote tracking branch.
+
+-u <remote> <branch>: Used for the first push of a new branch. It sets the upstream tracking reference, meaning subsequent git push commands can be used without arguments.
+
+git fetch
+
+Function: Downloads commits, files, and refs from a remote repository into your local repository, without merging them into your current working files. It lets you see what changes are available on the remote before applying them.
+
+Arguments:
+
+(No arguments): Fetches all changes from the default remote (origin).
+
+<remote>: Fetches changes only from the specified remote.
+
+Integration Commands
+
+git merge
+
+Function: Integrates changes from one specified branch into the current working branch.
+
+Arguments:
+
+<branch-to-merge>: Merges the history of the specified branch into the current branch.
+
+git rebase
+
+Function: Moves or combines a sequence of commits to a new base commit. Its main use is to integrate changes from another branch by moving your local branch's commits to the "top" of the target branch's history, resulting in a cleaner, linear history.
+
+Arguments:
+
+<branch-to-rebase-onto>: Reapplies the current branch's commits on top of the specified branch.
+
+-i <commit-hash>: Starts an interactive rebase, allowing you to edit, squash, reorder, or drop commits within a specific range.
+
+How the Function of the Command Changes Based on Arguments
+
+The command whose function changes significantly based on the number of arguments is git checkout.
+
+Command
+
+Arguments Used
+
+Function
+
+git checkout
+
+<branch-name>
+
+Switches branches (the standard use).
+
+git checkout
+
+-b <new-branch-name>
+
+Creates and switches to a new branch (shortcut for two operations).
+
+git checkout
+
+<file-path>
+
+Restores a specific file from the last commit, discarding local changes (no branch switching).
